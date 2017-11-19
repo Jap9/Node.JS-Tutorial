@@ -21,7 +21,7 @@ app.get('/api/product/:productId', (req, res) => {
 
 app.post('/api/product', (req, res) => {
 	console.log('POST /api/product');
-	console.log(req.body);
+	//console.log(req.body);
 
 	let product = new Product();
 	product.name = req.body.name;
@@ -50,7 +50,6 @@ app.delete('/api/product/:productId', (req, res) => {
 mongoose.connection.openUri('mongodb://localhost:27017/shop', (err, res) => {
 	
 	if(err) return console.log('Error al conectar a la MongoDB ' + err);
-	
 	console.log('Conexion MongoDB OK');
 
 	app.listen(port, () => {
