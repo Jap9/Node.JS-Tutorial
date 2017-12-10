@@ -1,3 +1,9 @@
+/*
+Try to connect to MongoDB using URI defined in 'config.js' 
+If successful, begin to listen port defined in 'config.js'
+If error, print a console log and finish the server.
+*/
+
 const mongoose = require('mongoose');
 const app = require('./app');
 const config = require('./config');
