@@ -13,7 +13,7 @@ function signUp(req, res) {
 	});
 
 	user.save((err) => {
-		if(err) res.status(500).send({ message: "Error al crear el usuario " + err });
+		if(err) return res.status(500).send({ message: "Error al crear el usuario " + err });
 		return res.status(200).send({ token: service.createToken(user) });
 	});
 }
@@ -26,8 +26,8 @@ function signIn(req, res) {
 		
 		req.user = user;
 		res.status(200).send({ 
-		message: "Te has logueado correctamente",
-		token: service.createToken(user)});
+			message: "Te has logueado correctamente",
+			token: service.createToken(user)});
 	});
 }
 

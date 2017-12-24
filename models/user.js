@@ -15,7 +15,7 @@ const UserSchema = Schema({
 });
 
 // Execute something before data is stored in DB.
-UserSchema.pre('save', (next) => {
+UserSchema.pre('save', function(next) {
 	if(!this.isModified('password')) return next();
 
 	// Generate salt and check if error.
