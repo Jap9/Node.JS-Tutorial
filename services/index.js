@@ -22,12 +22,11 @@ function decodeToken(token) {
 		try {
 			const payload = jwt.decode(token, config.SECRET_TOKEN);
 			if(payload.exp <= moment().unix()) {
-				resolve({
+				reject({
 					status: 401,
 					message: 'Expired Token'
 				}); 
 			}
-
 			resolve(payload.sub);
 
 		} catch (err) {
@@ -37,6 +36,11 @@ function decodeToken(token) {
 			});
 		}
 	});
+
+	return decoded;
 }
 
-module.exports = createToken;
+module.exports = {
+	createToken,
+	decodeToken
+};
