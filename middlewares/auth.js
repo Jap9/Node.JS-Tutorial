@@ -6,9 +6,9 @@ function isAuth (req, res, next) {
 		return res.status(403).send({ message: "No auth header" });
 	}
 
-	const token = req.headers.authorization.spit(" ")[1];
+	const token = req.headers.authorization.split(" ")[1];
 
-	service.decodeToken(token)
+	services.decodeToken(token)
 	.then(response => {
 		req.user = response;
 		next();
