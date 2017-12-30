@@ -11,6 +11,7 @@ api.put('/product/:productId', auth, ProductControllers.updateProduct);
 api.delete('/product/:productId', auth, ProductControllers.deleteProduct);
 api.post('/signup', UserControllers.signUp);
 api.post('/signin', UserControllers.signIn);
+api.post('/refreshToken', auth,  UserControllers.refreshToken);
 api.get('/private', auth, (req, res) => {
 	res.status(200).send({ message: "You have access" });
 });

@@ -15,6 +15,12 @@ function createToken (user) {
 	return jwt.encode(payload, config.SECRET_TOKEN);
 }
 
+function createRefreshToken (user) {
+
+	//var refreshToken = user._id.toString() + '.' + crypto.randomBytes(40).toString('hex');
+	//return refreshToken;
+	return {};
+}
 
 function decodeToken(token) {
 	const decoded = new Promise((resolve, reject) => {
@@ -40,7 +46,16 @@ function decodeToken(token) {
 	return decoded;
 }
 
+
+
+function refreshToken(token) {
+
+	return { message: "Not implemented yet." };
+}
+
 module.exports = {
 	createToken,
-	decodeToken
+	decodeToken,
+	createRefreshToken,
+	refreshToken
 };
