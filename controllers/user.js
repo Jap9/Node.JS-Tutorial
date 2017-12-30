@@ -14,7 +14,7 @@ function signUp(req, res) {
 
 	user.save((err) => {
 		if(err) return res.status(500).send({ message: "Error al crear el usuario " + err });
-		return res.status(200).send({ token: service.createToken(user)/*, refreshToken: service.createRefreshToken(user)*/});
+		return res.status(200).send({ token: service.createToken(user), refreshToken: service.createRefreshToken(user)});
 	});
 }
 
@@ -33,7 +33,8 @@ function signIn(req, res) {
 
 // Get refresh Token in the params and generates another one if correct.
 function refreshToken(req, res) {
-	if(!req.body.refreshToken) return res.status(500).send({ message: 'Error missing field refreshToken' });
+	
+	if(!req.body.refreshToken) return res.status(500).send({ message: 'Error missing field: refreshToken' });
 	return res.status(200).send({ refreshToken: service.refreshToken(req.body.refreshToken) });
 }
 
