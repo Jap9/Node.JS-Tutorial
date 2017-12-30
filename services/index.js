@@ -2,6 +2,7 @@
 const jwt = require('jwt-simple');
 const moment = require('moment');
 const config = require('../config');
+const crypto = require('crypto');
 
 function createToken (user) {
 
@@ -17,9 +18,7 @@ function createToken (user) {
 
 function createRefreshToken (user) {
 
-	//var refreshToken = user._id.toString() + '.' + crypto.randomBytes(40).toString('hex');
-	//return refreshToken;
-	return {};
+	return user._id.toString() + '.' + crypto.randomBytes(40).toString('hex');
 }
 
 function decodeToken(token) {
