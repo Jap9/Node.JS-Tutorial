@@ -9,9 +9,9 @@ function signUp(req, res) {
 
 	const user = new User({
 		email: req.body.email,
-		displayName: req.body.displayName
+		displayName: req.body.displayName,
+		password: req.body.password
 	});
-	console.log(user);
 
 	user.save((err) => {
 		if(err) return res.status(500).send({ message: "Error al crear el usuario " + err });

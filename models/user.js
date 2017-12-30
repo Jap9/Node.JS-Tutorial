@@ -6,18 +6,20 @@ const crypto = require('crypto');
 
 // "select: false" prevents sending password on every SELECT.
 const UserSchema = Schema({
-	email: { type: String, unique: true, lowercase: true},
+	email: { type: String, unique: true, lowercase: true },
 	displayName: String,
 	avatar: String,
-	password: { type: String, select: false},
+	password: { type: String, select: false },
 	signupDate: { type: Date, default: Date.now() },
 	lastLogin: Date
 });
 
 // Execute something before data is stored in DB.
 UserSchema.pre('save', function(next) {
+	
+	// Hash the password if it has been modified (or is new)
 	if(!this.isModified('password')) return next();
-
+	
 	// Generate salt and check if error.
 	bcrypt.genSalt(10, (err, salt) =>{
 		if(err) return next(err);	
