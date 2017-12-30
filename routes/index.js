@@ -15,4 +15,8 @@ api.get('/private', auth, (req, res) => {
 	res.status(200).send({ message: "You have access" });
 });
 
+api.get('/health', (req, res) => {
+	res.status(200).send({ message: "Server is up" });
+});
+
 module.exports = api;
