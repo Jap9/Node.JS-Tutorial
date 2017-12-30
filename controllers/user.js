@@ -8,9 +8,10 @@ const service = require('../services'); // "/index" is not needed.
 function signUp(req, res) {
 
 	const user = new User({
-		email: req.body.mail,
+		email: req.body.email,
 		displayName: req.body.displayName
 	});
+	console.log(user);
 
 	user.save((err) => {
 		if(err) return res.status(500).send({ message: "Error al crear el usuario " + err });
